@@ -37,7 +37,7 @@ class AppScaffold extends StatelessWidget {
         backgroundColor: moodleGrayBg,
         foregroundColor: moodlePurple,
         child: Text(
-          'YH',
+          'DA',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
         ),
       ),
