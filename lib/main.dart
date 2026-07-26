@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moodle/views/dashboard_view.dart';
 import 'package:moodle/views/courses_view.dart';
+import 'package:moodle/views/calendar_view.dart';
 import 'package:moodle/constants.dart';
 
 void main() {
@@ -27,6 +28,7 @@ class MoodleApp extends StatelessWidget {
       routes: {
         '/': (context) => const DashboardView(),
         '/courses': (context) => const CoursesView(),
+        '/calendar': (context) => const CalendarView(),
       },
       debugShowCheckedModeBanner: false,
     );

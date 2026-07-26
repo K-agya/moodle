@@ -8,6 +8,7 @@ class NavDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final currentRoute = ModalRoute.of(context)?.settings.name ?? '/';
     final bool isDashboard = currentRoute == '/';
+    final bool isCalendar = currentRoute == '/calendar';
     final bool isCourses = currentRoute == '/courses';
 
     return Drawer(
@@ -64,16 +65,21 @@ class NavDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.calendar_month_outlined, color: moodleWhite),
+              leading:
+                  const Icon(Icons.calendar_month_outlined, color: moodleWhite),
               title: const Text(
                 'Calendar',
                 style: TextStyle(color: moodleWhite, fontSize: 16),
               ),
+              selected: isCalendar,
+              selectedTileColor: Colors.white24,
               onTap: () {
-                // placeholder
+                Navigator.pop(context);
+                if (!isCalendar) {
+                  Navigator.pushReplacementNamed(context, '/calendar');
+                }
               },
             ),
-
             ListTile(
               leading: const Icon(Icons.school_outlined, color: moodleWhite),
               title: const Text(
