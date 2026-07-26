@@ -32,13 +32,19 @@ class AppScaffold extends StatelessWidget {
         onPressed: () {},
       ),
       const SizedBox(width: 8),
-      const CircleAvatar(
-        radius: 18,
-        backgroundColor: moodleGrayBg,
-        foregroundColor: moodlePurple,
-        child: Text(
-          'DA',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+      InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, '/profile');
+        },
+        borderRadius: BorderRadius.circular(18),
+        child: const CircleAvatar(
+          radius: 18,
+          backgroundColor: moodleGrayBg,
+          foregroundColor: moodlePurple,
+          child: Text(
+            'DA',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+          ),
         ),
       ),
       const SizedBox(width: 16),

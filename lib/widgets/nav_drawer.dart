@@ -7,8 +7,10 @@ class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentRoute = ModalRoute.of(context)?.settings.name ?? '/';
-    final bool isDashboard = currentRoute == '/';
+    final bool isDashboard =
+        currentRoute == '/' || currentRoute == '/dashboard';
     final bool isCalendar = currentRoute == '/calendar';
+    final bool isAssessments = currentRoute == '/assessments';
     final bool isCourses = currentRoute == '/courses';
 
     return Drawer(
@@ -60,7 +62,7 @@ class NavDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 if (!isDashboard) {
-                  Navigator.pushReplacementNamed(context, '/');
+                  Navigator.pushNamed(context, '/dashboard');
                 }
               },
             ),
@@ -76,7 +78,7 @@ class NavDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 if (!isCalendar) {
-                  Navigator.pushReplacementNamed(context, '/calendar');
+                  Navigator.pushNamed(context, '/calendar');
                 }
               },
             ),
@@ -91,7 +93,23 @@ class NavDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 if (!isCourses) {
-                  Navigator.pushReplacementNamed(context, '/courses');
+                  Navigator.pushNamed(context, '/courses');
+                }
+              },
+            ),
+            ListTile(
+              leading:
+                  const Icon(Icons.assignment_outlined, color: moodleWhite),
+              title: const Text(
+                'Assessments',
+                style: TextStyle(color: moodleWhite, fontSize: 16),
+              ),
+              selected: isAssessments,
+              selectedTileColor: Colors.white24,
+              onTap: () {
+                Navigator.pop(context);
+                if (!isAssessments) {
+                  Navigator.pushNamed(context, '/assessments');
                 }
               },
             ),
