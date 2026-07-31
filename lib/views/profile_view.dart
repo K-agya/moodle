@@ -96,6 +96,43 @@ class ProfileView extends StatelessWidget {
                         label: 'Student ID',
                         value: '2269672',
                       ),
+                      const SizedBox(height: 24),
+              Card(
+                color: moodleWhite,
+                elevation: 0,
+                shape: const RoundedRectangleBorder(
+                  side: BorderSide(color: moodleBorder),
+                  borderRadius: BorderRadius.all(Radius.circular(8)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  child: Column(
+                    children: [
+                      ListTile(
+                        leading: const Icon(Icons.lock_outline, color: moodleTextMuted),
+                        title: const Text('Change Password'),
+                        onTap: () {},
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.notifications_outlined, color: moodleTextMuted),
+                        title: const Text('Notification Preferences'),
+                        onTap: () {},
+                      ),
+                      ListTile(
+                        leading: const Icon(Icons.logout, color: Colors.red),
+                        title: const Text('Log out', style: TextStyle(color: Colors.red)),
+                        onTap: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/login',
+                            (route) => false,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
                     ],
                   ),
                 ),

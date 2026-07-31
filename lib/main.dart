@@ -3,6 +3,7 @@ import 'package:moodle/views/dashboard_view.dart';
 import 'package:moodle/views/courses_view.dart';
 import 'package:moodle/views/calendar_view.dart';
 import 'package:moodle/views/profile_view.dart';
+import 'package:moodle/views/login_view.dart';
 import 'package:moodle/views/course_details_view.dart';
 import 'package:moodle/views/assessments_view.dart';
 import 'package:moodle/constants.dart';
@@ -36,6 +37,7 @@ class MoodleApp extends StatelessWidget {
         '/course-details': (context) => const CourseDetailsView(),
         '/assessments': (context) => const AssessmentsView(),
         '/calendar': (context) => const CalendarView(),
+        '/login': (context) => const LoginView(),
       },
       debugShowCheckedModeBanner: false,
     );
