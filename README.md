@@ -62,6 +62,23 @@ The app opens on the Dashboard. Use the navigation drawer (hamburger icon)
 to move between pages, tap a course card to view its details, or tap the
 avatar icon in the top bar to open the Profile page.
 
+## Testing
+
+Run the automated widget and view tests with:
+
+```bash
+flutter test
+```
+
+The test suite covers the Dashboard, course navigation and details, login,
+assessments, calendar, and profile logout flows. Tests are located in `test/`:
+
+```
+test/
+  widget_test.dart  # App-level widget and navigation tests
+  views_test.dart   # Individual view tests
+```
+
 ## Tech Stack
 
 - Flutter / Dart
