@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moodle/widgets/app_scaffold.dart';
 import 'package:moodle/constants.dart';
+import 'package:moodle/widgets/calendar_card.dart';
 
 class DashboardView extends StatelessWidget {
   const DashboardView({Key? key}) : super(key: key);
@@ -28,16 +29,12 @@ class DashboardView extends StatelessWidget {
               ),
               const SizedBox(height: 16),
               _card(
-                'Upcoming Deadlines',
-                'Item 1 (Flutter) — Referral and Deferral Coursework is due 29 July 2026, 13:00 (48-hour extension to 31 July 2026, 13:00).',
-                Icons.event_outlined,
-              ),
-              const SizedBox(height: 16),
-              _card(
                 'Latest Announcements',
                 'No new announcements at this time.',
                 Icons.notifications_outlined,
               ),
+              const SizedBox(height: 16),
+              const CalendarCard(),
             ],
           ),
         ),
