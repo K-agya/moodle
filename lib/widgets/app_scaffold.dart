@@ -52,29 +52,34 @@ class AppScaffold extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: moodleWhite,
-        foregroundColor: moodleTextDark,
-        elevation: 1,
-        titleSpacing: 0,
-        title: Row(
-          children: [
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              width: 32,
-              height: 32,
-              child: Image.asset(
-                'images/moodle_logo.png',
-                fit: BoxFit.contain,
-              ),
-            ),
-            Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-            ),
-          ],
+  backgroundColor: moodleWhite,
+  foregroundColor: moodleTextDark,
+  elevation: 1,
+  titleSpacing: 0,
+  title: Row(
+    children: [
+      GestureDetector(
+        onTap: () {
+          Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (route) => false);
+        },
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          width: 32,
+          height: 32,
+          child: Image.asset(
+            'images/moodle_logo.png',
+            fit: BoxFit.contain,
+          ),
         ),
-        actions: actions ?? defaultActions,
       ),
+      Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+      ),
+    ],
+  ),
+  actions: actions ?? defaultActions,
+),
       drawer: const NavDrawer(),
       floatingActionButton: floatingActionButton,
       body: body,
