@@ -47,7 +47,7 @@ class LoginView extends StatelessWidget {
                     ),
                     const SizedBox(height: 24),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {Navigator.pushNamedAndRemoveUntil(context, '/dashboard', (route) => false);},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: moodlePurple,
                         foregroundColor: moodleWhite,
