@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moodle/widgets/app_scaffold.dart';
 import 'package:moodle/constants.dart';
+import 'package:moodle/models/course.dart';
 
 class CoursesView extends StatelessWidget {
   const CoursesView({Key? key}) : super(key: key);
@@ -51,7 +52,7 @@ class CoursesView extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/course-details');
+          Navigator.pushNamed(context, '/course-details', arguments: papl);
         },
         borderRadius: BorderRadius.circular(8),
         child: Padding(
