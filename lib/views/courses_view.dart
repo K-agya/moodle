@@ -26,11 +26,9 @@ class CoursesView extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              _buildCourseCard(
-                context,
-                title: 'Programming Applications and Programming Languages',
-                subtitle: 'M30235',
-              ),
+              _buildCourseCard(context, course: papl),
+              const SizedBox(height: 16),
+              _buildCourseCard(context, course: maths),
             ],
           ),
         ),
@@ -40,8 +38,7 @@ class CoursesView extends StatelessWidget {
 
   Widget _buildCourseCard(
     BuildContext context, {
-    required String title,
-    required String subtitle,
+    required Course course,
   }) {
     return Card(
       color: moodleWhite,
@@ -52,7 +49,7 @@ class CoursesView extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/course-details', arguments: papl);
+          Navigator.pushNamed(context, '/course-details', arguments: course);
         },
         borderRadius: BorderRadius.circular(8),
         child: Padding(
@@ -78,7 +75,7 @@ class CoursesView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      title,
+                      course.code,
                       style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -87,7 +84,7 @@ class CoursesView extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      subtitle,
+                      course.title,
                       style: const TextStyle(
                         fontSize: 14,
                         color: moodleTextMuted,
