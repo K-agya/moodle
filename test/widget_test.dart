@@ -1,33 +1,63 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:moodle/main.dart';
+import 'package:moodle/models/course.dart';
 
 void main() {
-  testWidgets('App renders dashboard and courses screen correctly',
-      (WidgetTester tester) async {
-    // Set desktop screen size
-    tester.view.physicalSize = const Size(1200, 800);
-    tester.view.devicePixelRatio = 1.0;
-    addTearDown(() {
-      tester.view.resetPhysicalSize();
-      tester.view.resetDevicePixelRatio();
-    });
-
-    // Build our app and trigger a frame.
+  Future<void> pumpApp(WidgetTester tester) async {
     await tester.pumpWidget(const MoodleApp());
+    await tester.pumpAndSettle();
+  }
 
-    // Verify that Dashboard title exists.
-    expect(find.text('Dashboard'), findsNWidgets(2));
+  testWidgets('app starts on the dashboard', (tester) async {
+    await pumpApp(tester);
 
-    // Open drawer
+    expect(find.text('Dashboard'), findsWidgets);
+    expect(find.text('Course Overview'), findsOneWidget);
+    expect(find.text('Latest Announcements'), findsOneWidget);
+  });
+
+  testWidgets('drawer navigates to My courses', (tester) async {
+    await pumpApp(tester);
+
     await tester.tap(find.byIcon(Icons.menu));
     await tester.pumpAndSettle();
-
-    // Navigate to My Courses in drawer
     await tester.tap(find.text('My courses'));
     await tester.pumpAndSettle();
 
-    // Verify Courses page contains title
-    expect(find.text('This is the courses overview page.'), findsOneWidget);
+    expect(find.text(papl.code), findsOneWidget);
+    expect(find.text(maths.code), findsOneWidget);
+  });
+
+  testWidgets('course card opens its details view', (tester) async {
+    await pumpApp(tester);
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('My courses'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text(papl.code));
+    await tester.pumpAndSettle();
+
+    expect(find.text(papl.title), findsOneWidget);
+    expect(
+      find.text('Module Coordinator: ${papl.coordinator}'),
+      findsOneWidget,
+    );
+    expect(find.text('Course Overview'), findsOneWidget);
+  });
+
+  testWidgets('login button returns the user to the dashboard', (tester) async {
+    await pumpApp(tester);
+
+    final navigator = tester.state<NavigatorState>(find.byType(Navigator));
+    navigator.pushNamed('/login');
+    await tester.pumpAndSettle();
+
+    expect(find.widgetWithText(ElevatedButton, 'Log in'), findsOneWidget);
+    await tester.tap(find.widgetWithText(ElevatedButton, 'Log in'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Dashboard'), findsWidgets);
   });
 }
