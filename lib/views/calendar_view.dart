@@ -15,7 +15,7 @@ class _CalendarViewState extends State<CalendarView> {
   DateTime? _selectedDay = DateTime(2026, 7, 1);
 
   final Map<DateTime, List<String>> _events = {
-    DateTime(2026, 7, 17): [
+    DateTime(2026, 7, 29): [
       'Flutter Coursework is due',
     ],
     DateTime(2026, 7, 20): [
